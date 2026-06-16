@@ -1,3 +1,4 @@
+import { createServer } from "http";
 import {
   Client,
   GatewayIntentBits,
@@ -14,6 +15,12 @@ import * as rapporto from "./commands/rapporto.js";
 import * as stato from "./commands/stato.js";
 import { handleServizioButton } from "./handlers/servizio.js";
 import { handleRapportoModal } from "./handlers/rapportoModal.js";
+
+// Server HTTP per UptimeRobot
+createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("Il bot è online!");
+}).listen(process.env.PORT || 3000);
 
 const token = process.env["DISCORD_TOKEN"];
 
